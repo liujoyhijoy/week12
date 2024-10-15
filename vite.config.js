@@ -24,7 +24,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/https://github.com/liujoyhijoy/week12.git/',  // 替换 <repository-name> 为GitHub 仓库名
+  base: '/week12/',   // 替换 <repository-name> 为GitHub 仓库名,只是仓库！！不是完整
   plugins: [
     vue(),
     vueDevTools(),
