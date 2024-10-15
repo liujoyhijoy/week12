@@ -122,9 +122,9 @@ router.beforeEach((to, from, next) => {
     console.log('Navigating from:', from.path, 'to:', to.path, 'Authenticated:', isAuthenticated.value);
   
     if (to.meta.requiresAuth && !isAuthenticated.value) {
-      next('/access-denied'); // 如果用户未认证且尝试访问受限制页面，则重定向到 AccessDenied 页面
+      next('/access-denied'); // 如果用户未认证且尝试访问受限制页面
     } else if (to.path === '/' && isAuthenticated.value) {
-      next('/about'); // 如果用户已认证并试图访问登录页，重定向到 About
+      next('/weather'); // 如果用户已认证并试图访问登录页
     } else {
       next(); // 继续导航
     }
