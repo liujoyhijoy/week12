@@ -6,9 +6,9 @@ import LoginView from '../views/LoginView.vue';
 import AccessDenied from '../views/AccessDenied.vue';
 
 import { ref } from 'vue'
-const isAuthenticated = ref(false); // 全局认证状态
+const isAuthenticated = ref(false); 
 
-import { inject } from 'vue'; // 添加 inject 函数
+import { inject } from 'vue'; 
 import FirebaseSigninView from '@/views/FirebaseSigninView.vue';
 import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue';
 import AddBookView from '@/views/AddBookView.vue';
@@ -26,7 +26,7 @@ import GetAllBookAPI from '@/views/GetAllBookAPI.vue';
 
 const routes = [
   {
-    path: '/login',  // 设置根路径显示 LoginView
+    path: '/login',  
     name: 'Login',
     component: LoginView
   },
@@ -39,7 +39,7 @@ const routes = [
     path: '/about',
     name: 'About',
     component: AboutView,
-    meta: { requiresAuth: true } // 标记需要认证的路由
+    meta: { requiresAuth: true } 
   },
   {
     path: '/access-denied',
