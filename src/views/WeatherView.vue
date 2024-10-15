@@ -16,57 +16,55 @@
   </template>
   
   <script>
-    import axios from "axios";
+  import axios from "axios";
   
-    const apikey = "d3129aaa01ec0708edf4204d4811af95";
-  
-    export default {
-      name: "WeatherView",
-      data() {
-        return {
-          city: "",
-          weatherData: null,
-          hourlyForecast: [],
-          dailyForecast: [],
-        };
+  export default {
+    name: "WeatherView",
+    data() {
+      return {
+        city: "",
+        weatherData: null,
+        hourlyForecast: [],
+        dailyForecast: [],
+      };
+    },
+    computed: {
+      temperature() {
+        return this.weatherData
+          ? Math.floor(this.weatherData.main.temp - 273)
+          : null;
       },
-      computed: {
-        temperature() {
-          return this.weatherData
-            ? Math.floor(this.weatherData.main.temp - 273)
-            : null;
-        },
-        iconUrl() {
-          return this.weatherData
-            ? `http://api.openweathermap.org/img/w/${this.weatherData.weather[0].icon}.png`
-            : null;
-        },
+      iconUrl() {
+        return this.weatherData
+          ? `https://api.openweathermap.org/img/w/${this.weatherData.weather[0].icon}.png`
+          : null;
       },
-      mounted() {
-        this.fetchCurrentLocationWeather();
+    },
+    mounted() {
+      this.fetchCurrentLocationWeather();
+    },
+    methods: {
+      async fetchCurrentLocationWeather() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(async (position) => {
+            const { latitude, longitude } = position.coords;
+            const url = `${import.meta.env.VITE_WEATHER_API_URL}?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`;
+            await this.fetchWeatherData(url);
+          });
+        }
       },
-      methods: {
-        async fetchCurrentLocationWeather() {
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(async (position) => {
-              const { latitude, longitude } = position.coords;
-              const url 
-              = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
-              await this.fetchWeatherData(url);
-            });
-          }
-        },
-        async fetchWeatherData(url) {
-          try {
-            const response = await axios.get(url);
-            this.weatherData = response.data;
-          } catch (error) {
-            console.error("Error fetching weather data:", error);
-          }
-        },
+      async fetchWeatherData(url) {
+        try {
+          const response = await axios.get(url);
+          this.weatherData = response.data;
+        } catch (error) {
+          console.error("Error fetching weather data:", error);
+        }
       },
-    };
+    },
+  };
   </script>
+  
   
   <style scoped>
   .container {
