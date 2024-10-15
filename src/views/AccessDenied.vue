@@ -6,7 +6,7 @@
   </template>
   
   <script setup>
-  // 在这个示例中没有特定逻辑，因此不需要 `script` 部分
+  
   </script>
   
   <style scoped>

@@ -9,17 +9,29 @@ import { ref } from 'vue'
 const isAuthenticated = ref(false); // 全局认证状态
 
 import { inject } from 'vue'; // 添加 inject 函数
+import FirebaseSigninView from '@/views/FirebaseSigninView.vue';
+import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue';
+import AddBookView from '@/views/AddBookView.vue';
+import AdminFirebaseSigninView from '@/views/AdminFirebaseSigninView.vue';
+import AdminFirebaseRegisterView from '@/views/AdminFirebaseRegisterView.vue';
+import AdminDashboardView from '@/views/AdminDashboardView.vue';
+import UserDashboard from '@/views/UserDashboard.vue';
+import GetBookCountView from '@/views/GetBookCountView.vue';
+import WeatherView from '@/views/WeatherView.vue';
+import CountBookAPI from '@/views/CountBookAPI.vue';
+import SearchWeatherView from '@/views/SearchWeatherView.vue';
+import GetAllBookAPI from '@/views/GetAllBookAPI.vue';
 
 
 
 const routes = [
   {
-    path: '/',  // 设置根路径显示 LoginView
+    path: '/login',  // 设置根路径显示 LoginView
     name: 'Login',
     component: LoginView
   },
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     component: HomeView
   },
@@ -33,7 +45,68 @@ const routes = [
     path: '/access-denied',
     name: 'AccessDenied',
     component: AccessDenied
-  }
+  },
+  {
+    path: '/firesignin',
+    name: 'firesignin',
+    component:  FirebaseSigninView
+  },
+  {
+    path: '/fireregister',
+    name: 'fireregister',
+    component:  FirebaseRegisterView
+  },
+  {
+    path: '/userdashboard',
+    name: 'faddbookuserdashboard',
+    component:  UserDashboard
+  },
+  {
+    path: '/adminfiresignin',
+    name: 'adminfiresignin',
+    component:  AdminFirebaseSigninView
+  },
+  {
+    path: '/adminfireregister',
+    name: 'adminfireregister',
+    component:  AdminFirebaseRegisterView
+  },
+  {
+    path: '/admindashboard',
+    name: 'admindashboard',
+    component:  AdminDashboardView
+  },
+  {
+    path: '/addbook',
+    name: 'faddbook',
+    component:  AddBookView
+  },
+  {
+    path: '/getbookcount',
+    name: 'GetBookCount',
+    component:  GetBookCountView
+  },
+  {
+    path: '/weather',
+    name: 'WeatherView',
+    component:  WeatherView
+  },
+  {
+    path: '/countbookapi',
+    name: 'CountBookView',
+    component:  CountBookAPI
+  },
+  {
+    path: '/searchweather',
+    name: 'SearchWeatherView',
+    component:  SearchWeatherView
+  },
+  {
+    path: '/getallbookapi',
+    name: 'GetAllBookAPI',
+    component:  GetAllBookAPI
+  },
+
 ];
 
 const router = createRouter({
