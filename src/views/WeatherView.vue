@@ -82,7 +82,7 @@ export default {
 
   
   
-  <style scoped>
+<style scoped>
   .container {
     padding: 20px;
     text-align: center;
